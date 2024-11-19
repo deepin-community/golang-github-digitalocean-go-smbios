@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
 
+# Only build the libraries, and not the included simple utilities.
+# A more actively maintained package "smbios-utils" is already available
+# in the archive, which would better serve an end-user than the two
+# simple utilities included in this package.
+export DH_GOLANG_EXCLUDES := cmd/
+
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
