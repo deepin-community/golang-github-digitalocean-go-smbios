@@ -1,15 +1,35 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-digitalocean-go-smbios
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <mathias@calenhad.com>
+Section: golang
+Testsuite: autopkgtest-pkg-go
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+               golang-github-google-go-cmp-dev
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-digitalocean-go-smbios
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-digitalocean-go-smbios.git
+Homepage: https://github.com/digitalocean/go-smbios
+Rules-Requires-Root: no
+XS-Go-Import-Path: github.com/digitalocean/go-smbios
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-digitalocean-go-smbios-dev
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         golang-github-google-go-cmp-dev
+Description: Detection and access to SMBIOS and DMI data and structures (library)
+ Provides detection and access to System Management BIOS (SMBIOS) and
+ Desktop Management Interface (DMI) data and structures. SMBIOS is a
+ standard mechanism for fetching BIOS and hardware information from
+ within an operating system. It shares some similarities with the
+ older DMI standard, and the two are often confused.
+ .
+ This package is based on the SMBIOS 3.1.1 specification, but should
+ work with SMBIOS 2.0 and above.
+ .
+ In general, it's up to hardware manufacturers to properly populate
+ SMBIOS data, and many structures may not be populated correctly or at
+ all; especially on consumer hardware.
